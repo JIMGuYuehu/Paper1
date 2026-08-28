@@ -1,9 +1,10 @@
 cff-version: 1.2.0
-message: "Please cite the associated manuscript and this software repository."
+message: "Please cite the associated manuscript and this code release."
 title: "Code for Predictability of extreme Arctic spring ozone depletion"
 type: software
-version: 0.1.0
-date-released: 2026-08-28
+version: 0.2.0
 authors:
-  - family-names: Hu
-    given-names: Weiji
+  - family-names: "Hu"
+    given-names: "Weiji"
+repository-code: "https://github.com/JIMGuYuehu/Paper1"
+license: "GPL-3.0-only"

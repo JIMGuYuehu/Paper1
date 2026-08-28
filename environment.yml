@@ -1,6 +1,4 @@
 name: paper1-ozone
-# Portable fallback environment. On STREAM, use jimnew for Python, system NCO,
-# and PAPER1_CDO_BIN=/home/weiji/miniconda3/envs/cdo_tools/bin/cdo.
 channels:
   - conda-forge
 dependencies:

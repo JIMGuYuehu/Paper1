@@ -1,14 +1,13 @@
-# Runtime products are regenerated on STREAM2 and are not source code.
+config.sh
+data/*
+!data/README.md
+work/
+output/
 **/__pycache__/
 **/.ipynb_checkpoints/
-02_diagnostics/data/
-artifacts/
-figures/
-runtime/
-.validation_tmp_*/
-logs/
-.DS_Store
 *.pyc
 *.log
 *.tmp
 *.tmp.nc
+.DS_Store
+Thumbs.db
