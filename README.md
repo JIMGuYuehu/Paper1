@@ -41,4 +41,3 @@ python 01_preprocessing/09_lightweight_reproduction_check.py
 See `FIGURE_MAP.md` for figure-to-notebook mapping,
 `METHODS_NOTES.md` for the calculation definitions and known version issues,
 and `MANUSCRIPT_FIGURE_MANIFEST.csv` for exact manuscript-file hashes.
-

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript and this software repository."
+title: "Code for Predictability of extreme Arctic spring ozone depletion"
+type: software
+version: 0.1.0
+date-released: 2026-08-28
+authors:
+  - family-names: Hu
+    given-names: Weiji
