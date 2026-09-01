@@ -2,7 +2,7 @@
 
 Analysis and plotting code for the manuscript *Predictability of extreme Arctic spring ozone depletion*.
 
-This repository contains the workflow used for the 23 figure files currently included in this release: raw-data preparation, calculation of the diagnostics described in Methods, and figure production. Raw WACCM output, MERRA-2, and MLS files are not stored in Git because of their size and distribution terms.
+This repository contains the workflow used for the 24 figure files currently included in this release: raw-data preparation, calculation of the diagnostics described in Methods, and figure production. Raw WACCM output, MERRA-2, and MLS files are not stored in Git because of their size and distribution terms.
 
 ## Repository structure
 
@@ -53,6 +53,7 @@ The preprocessing stage is large. If archived figure-ready products are supplied
 | Figure 6b | `figures/figure06_hindcast_spread_timing.ipynb` | daily population spread of O3, EP100, U60N10, and 50-hPa polar-cap minimum temperature |
 | Figure 7a; Figure 7b; Figure 7c | `figures/figure07_rmse_pathway.ipynb` | January-member RMSE relationships |
 | Figure 8b; Figure 8h; Appendix C Figure 8a | `figures/figure08_january_wave_precursor.ipynb` | January EP100 predictors, ozone minimum/RMSE, and minimum dates |
+| Figure 9d | `figures/figure09d_february_member_ep100.ipynb` | February days-21--40 EP100 versus centered-five-day spring ozone minimum |
 | Appendix C Figure 9a | `figures/figure09a_february_o3_minimum_date.ipynb` | February-hindcast ozone-minimum dates |
 | Appendix C Figure 11b | `figures/figure11_wave_window_scan.ipynb` | Pearson window scan and days-21--40 markers |
 | Figure 15f | `figures/figure15_low_o3_z300_epflux.ipynb` | Z300 and upward EP-flux composites with 5,000 bootstraps |
@@ -63,6 +64,7 @@ The preprocessing stage is large. If archived figure-ready products are supplied
 ## Core definitions
 
 - Partial ozone column: 30--70 hPa, followed by a cosine-weighted 60--90 N mean; spring minima use a centred five-day mean over 1 March--30 April.
+- Appendix B event profiles: daily 60--90 N ozone anomalies relative to a target-excluded daily climatology (MERRA-2 1980--2019, N=40; the 22 complete non-target BWCN years); no temporal smoothing is applied to the climatology, anomaly, or bootstrap significance mask.
 - NAM/AO: fixed leading EOFs of monthly zonal-mean geopotential-height anomalies north of 20 N; AO is the 1000-hPa NAM level.
 - EP flux: Jucker pressure-coordinate formulation with all resolved waves, zonal-wind correction, no pressure-velocity covariance, monthly static stability, and a 40--80 N cosine mean of the upward component.
 - Hindcast relationships: population spread (`ddof=0`), finite-member CRPS, memberwise RMSE, and two-sided Pearson correlation. No Spearman correlation is used.

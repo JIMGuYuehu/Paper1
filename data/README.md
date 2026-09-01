@@ -33,3 +33,7 @@ work/
 ```
 
 Source files are opened read-only. Missing WACCM calendar days are retained as missing values; they are not temporally interpolated.
+
+`work/ozone/event_profile_bootstrap5000.nc` stores the daily, unsmoothed Appendix B event-profile anomaly, target-excluded daily climatology, 95% bootstrap bounds, and significance mask. Its fixed baselines are MERRA-2 1980--2019 (N=40) and the 22 complete BWCN years other than year 0008. The product is required to carry the exact baseline IDs/counts, `profile_anomaly_temporal_resolution=daily`, and `temporal_smoothing_days=0`.
+
+`work/relationships/figure09d.csv` stores the 30 February-initialized members, the no-W EP100 mean for forecast days 21--40 (21 February--12 March), the centered-five-day spring ozone minimum, Pearson/OLS statistics, and the year-0008 reference point used only for display.

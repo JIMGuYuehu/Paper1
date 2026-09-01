@@ -189,8 +189,40 @@ def build_hindcast_relationships(root: Path, *, overwrite: bool = False) -> pd.D
         table = _relationship_table(subset, case=case, x_name=x_name, selector=selector,
                                     ref_x=ref_x, ref_y=reference_details["minimum_du"])
         write_csv_atomic(table, root / "relationships" / filename,
-                         required_columns=["case", "member", "x", "y", "is_low", "r", "p", "n", "slope", "intercept", "ref_x", "ref_y", "low25_threshold_du", "epflux_method", "minimum_method"],
-                         exact_rows=len(table), overwrite=overwrite)
+                          required_columns=["case", "member", "x", "y", "is_low", "r", "p", "n", "slope", "intercept", "ref_x", "ref_y", "low25_threshold_du", "epflux_method", "minimum_method"],
+                          exact_rows=len(table), overwrite=overwrite)
+
+    # Main-text Figure 09d: after the February initialization, skip the first
+    # 20 complete forecast days and average the following 20 days (days
+    # 21--40, inclusive Feb 21--Mar 12).  The year-0008 reference point is
+    # display context only and is excluded from the 30-member Pearson/OLS fit.
+    february = frame.loc[frame.case.eq("0008-02")].copy()
+    figure09d = _relationship_table(
+        february,
+        case="0008-02",
+        x_name="ep100_doy52_71_mean",
+        selector=lambda values: np.ones(len(values), dtype=bool),
+        ref_x=float(np.nanmean(ref_ep[(ref_doy >= 52) & (ref_doy <= 71)])),
+        ref_y=reference_details["minimum_du"],
+    )
+    figure09d["window_start_doy"] = 52
+    figure09d["window_end_doy"] = 71
+    figure09d["window_days"] = 20
+    figure09d["forecast_day_start"] = 21
+    figure09d["forecast_day_end"] = 40
+    write_csv_atomic(
+        figure09d,
+        root / "relationships" / "figure09d.csv",
+        required_columns=[
+            "case", "member", "x", "y", "is_low", "r", "p", "n",
+            "slope", "intercept", "ref_x", "ref_y",
+            "low25_threshold_du", "epflux_method", "minimum_method",
+            "window_start_doy", "window_end_doy", "window_days",
+            "forecast_day_start", "forecast_day_end",
+        ],
+        exact_rows=30,
+        overwrite=overwrite,
+    )
 
     # Figure 8h uses the January-initialized 20-day EP100 mean as predictor
     # and the already validated Jan 1--May 30 (Nt=150) partial-O3 RMSE as the
